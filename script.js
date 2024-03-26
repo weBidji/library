@@ -1,6 +1,6 @@
 const myLibrary = [];
 const addbtn = document.getElementById('add-btn');
-const dialog = document.querySelector("dialog");
+const dialogElement = document.querySelector("dialog");
 const submitBtn = document.getElementById('submit-btn')
 const newTitle = document.getElementById('title');
 const newAuthor = document.getElementById('author');
@@ -106,7 +106,7 @@ function updateLibrary() {
 }
 
 addbtn.addEventListener('click', () => {
-    dialog.showModal();
+    dialogElement.showModal();
 
 })
 
@@ -138,7 +138,7 @@ function addBookToLibrary(e) {
     newPages.value = '';
     readStatus.checked = false;
 
-    dialog.close();
+    dialogElement.close();
 
     updateLibrary();
 

@@ -5,10 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-        rel="stylesheet">
+
     <title>Library</title>
 </head>
 
@@ -18,7 +15,7 @@
         <button id="add-btn">+ Add book to collection</button>
     </div>
 
-    <dialog open>
+    <dialog>
 
         <form method="dialog">
             <label for="title">Title</label>
@@ -30,10 +27,12 @@
             <label for="pages">Pages</label>
             <input type="number" name="pages" id="pages" required>
 
-            <label for="read">Have you read it?</label>
-            <input type="checkbox" name="read-status" id="read-status">
+            <div class="checkbox-wrapper">
+                <label for="read">Have you read it?</label>
+                <input type="checkbox" name="read-status" id="read-status">
+            </div>
 
-           
+
             <button id="submit-btn">Add to library</button>
         </form>
     </dialog>

@@ -23,19 +23,77 @@
 body {
     font-family: var(--ff-krub);
     background-color: rgb(204, 179, 151);
-    /* padding-top: 200px; */
+
 }
 
 dialog {
+    margin: 0 auto;
     position: absolute;
     top: 20%;
-    width: 300px;
+
+    font-family: 'PT sans', Arial, Helvetica, sans-serif;
+    font-size: 1.3rem;
+    border: none;
+    border-radius: 15px;
+    padding: 3.5rem;
+
 }
 
+dialog::backdrop {
+    backdrop-filter: blur(2px);
+    background-color: rgba(128, 128, 128, 0.274);
+}
+
+
+
+label {
+    font-size: 1.6rem;
+}
+
+input {
+    border-radius: 5px;
+    border: 1px solid var(--amber-800);
+
+    padding: 8px;
+    font-size: 1.2rem;
+}
+
+input:focus {
+    outline: none;
+}
+
+.checkbox-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.5rem;
+    gap: 8px;
+    align-items: center;
+
+}
+
+
+
+
+#submit-btn {
+    background-color: #78350F;
+    font-weight: 900;
+    font-size: 1.25rem;
+    color: white;
+    margin-top: 1rem;
+    border-radius: 5px;
+    border: none;
+    padding: 0.5em 1.1em;
+    transition: transform 0.2s ease-in-out;
+}
+
+#submit-btn:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+
 .top-wrapper {
-    /*  position: fixed;
-    top: 0%;
-    width: 100%; */
+
     background-color: white;
     padding: 2rem 0;
     box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.356);
@@ -45,7 +103,6 @@ dialog {
 h1 {
     text-align: center;
     font-size: 3rem;
-    /* font-family:'PT sans'; */
     text-transform: uppercase;
 }
 
@@ -56,8 +113,6 @@ button {
 #add-btn {
     display: block;
     margin: 0 auto;
-    background-color: rgb(2, 17, 17);
-    background-color: var(--color-900);
     background-color: #78350F;
     font-weight: 900;
     font-size: 1.25rem;
@@ -72,9 +127,6 @@ button {
     cursor: pointer;
 }
 
-dialog {
-    margin: 0 auto;
-}
 
 form {
     height: 300px;
@@ -173,6 +225,6 @@ p {
 }
 
 @font-face {
-    font-family: 'Krub-bold';
-    src: url(fonts/Krub-Bold.ttf) format('truetype');
+    font-family: 'PT sans';
+    src: url(fonts/PTSans-Regular.ttf) format('truetype');
 }
