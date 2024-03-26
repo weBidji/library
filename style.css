@@ -30,3 +30,12 @@ form{
    
 }
 
+.book-tile{
+    height:250px;
+    width:250px;
+    background-color:pink;
+}
+
+h2{
+color:blue;
+}

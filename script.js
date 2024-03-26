@@ -1,6 +1,13 @@
 const myLibrary = [];
 const addbtn = document.getElementById('add-btn');
 const dialog = document.querySelector("dialog");
+const submitBtn = document.getElementById('submit-btn')
+const newTitle = document.getElementById('title');
+const newAuthor = document.getElementById('author');
+const newPages = document.getElementById('pages');
+const wasRead = document.getElementById('read');
+
+const booksGrid = document.getElementById('books-grid');
 
 
 function Book(title, author, pages, read) {
@@ -13,10 +20,56 @@ function Book(title, author, pages, read) {
 }
 
 addbtn.addEventListener('click', () => {
+    dialog.showModal();
 
 })
 
-function addBookToLibrary() {
+submitBtn.addEventListener('click', addBookToLibrary);
+
+function addBookToLibrary(e) {
+    e.preventDefault();
+
+    const title = newTitle.value;
+    const author = newAuthor.value;
+    const pages = newPages.value;
+    const read = wasRead.checked;
+
+    const newBook = new Book(title, author, pages, read);
+
+    myLibrary.push(newBook);
+
+    newTitle.value = ''; 456
+    newAuthor.value = '';
+    newPages.value = '';
+    wasRead.checked = false;
+
+    dialog.close();
+
+    console.log('added!');
+
+    booksGrid.innerHTML = '';
+
+    myLibrary.forEach((book) => {
+
+        const bookTile = document.createElement('div');
+        bookTile.classList.add('book-tile');
+        booksGrid.appendChild(bookTile);
+
+        const bookTitle = document.createElement('h2');
+        bookTitle.textContent = book.title;
+        bookTile.appendChild(bookTitle);
+
+        const bookAuthor = document.createElement('p');
+        bookAuthor.textContent = book.author;
+        bookTile.appendChild(bookAuthor);
+
+        const bookPages = document.createElement('p');
+        bookPages.textContent = book.pages;
+        bookTile.appendChild(bookPages);
+
+    }
+    )
 
 }
+
 
