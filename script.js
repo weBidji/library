@@ -10,12 +10,80 @@ const wasRead = document.getElementById('read');
 const booksGrid = document.getElementById('books-grid');
 
 
+
+
 function Book(title, author, pages, read) {
 
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = Boolean(read);
+
+}
+
+const lotr = new Book('The Lord of the rings', 'Tolkien', 452, true);
+const starWars = new Book('Star Wars', 'George Lucas', 289, false);
+const dune = new Book('Dune', 'The A. Uthor', 668, true);
+const dune2 = new Book('Dune', 'The A. Uthor', 668, true);
+const dune3 = new Book('Dune', 'The A. Uthor', 668, true);
+myLibrary.push(lotr);
+myLibrary.push(starWars);
+myLibrary.push(dune);
+myLibrary.push(dune2);
+myLibrary.push(dune3);
+document.addEventListener('DOMContentLoaded', updateLibrary);
+
+function updateLibrary() {
+
+    booksGrid.innerHTML = '';
+
+    myLibrary.forEach((book) => {
+
+        const bookTile = document.createElement('div');
+        bookTile.classList.add('book-tile');
+        booksGrid.appendChild(bookTile);
+
+        const bookTitle = document.createElement('h2');
+        bookTitle.textContent = book.title;
+        bookTile.appendChild(bookTitle);
+
+        const bookAuthor = document.createElement('p');
+        bookAuthor.textContent = book.author;
+        bookTile.appendChild(bookAuthor);
+
+        const bookPages = document.createElement('p');
+        bookPages.textContent = book.pages;
+        bookTile.appendChild(bookPages);
+
+        const readOrNot = document.createElement('p');
+        book.read ? readOrNot.textContent = "Read" : readOrNot.textContent = "Not read";
+        bookTile.appendChild(readOrNot);
+
+        const switchBtn = document.createElement('button');
+        bookTile.appendChild(switchBtn);
+        switchBtn.innerText = 'switch';
+        switchBtn.addEventListener('click', () => {
+            book.read = !book.read;
+            updateLibrary();
+        })
+
+        const deleteBtn = document.createElement('button');
+        bookTile.appendChild(deleteBtn);
+        deleteBtn.textContent = 'Delete entry';
+        deleteBtn.addEventListener('click', () => {
+            const index = myLibrary.indexOf(book);
+            if (index !== -1) {
+                myLibrary.splice(index, 1);
+
+                updateLibrary();
+
+
+            }
+        });
+
+    }
+    )
+
 
 }
 
@@ -49,60 +117,6 @@ function addBookToLibrary(e) {
 
     console.log('added!');
 
-    
 
-    function updateLibrary() {
-
-        booksGrid.innerHTML = '';
-
-        myLibrary.forEach((book) => {
-
-            const bookTile = document.createElement('div');
-            bookTile.classList.add('book-tile');
-            booksGrid.appendChild(bookTile);
-
-            const bookTitle = document.createElement('h2');
-            bookTitle.textContent = book.title;
-            bookTile.appendChild(bookTitle);
-
-            const bookAuthor = document.createElement('p');
-            bookAuthor.textContent = book.author;
-            bookTile.appendChild(bookAuthor);
-
-            const bookPages = document.createElement('p');
-            bookPages.textContent = book.pages;
-            bookTile.appendChild(bookPages);
-
-            const readOrNot = document.createElement('p');
-            book.read ? readOrNot.textContent = "Read" : readOrNot.textContent = "Not read";
-            bookTile.appendChild(readOrNot);
-
-            const switchBtn = document.createElement('button');
-            bookTile.appendChild(switchBtn);
-            switchBtn.innerText = 'switch';
-            switchBtn.addEventListener('click', () => {
-                book.read = !book.read;
-                updateLibrary();
-            })
-
-            const deleteBtn = document.createElement('button');
-            bookTile.appendChild(deleteBtn);
-            deleteBtn.textContent = 'Delete entry';
-            deleteBtn.addEventListener('click', () => {
-                const index = myLibrary.indexOf(book);
-                if (index !== -1) {
-                    myLibrary.splice(index, 1);
-
-                    updateLibrary();
-
-
-                }
-            });
-
-        }
-        )
-
-
-    }
 
 }

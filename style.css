@@ -32,10 +32,18 @@ form {
 
 }
 
+#books-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    justify-items: center;
+}
+
 .book-tile {
     height: 250px;
     width: 250px;
     background-color: pink;
+
 }
 
 h2 {
