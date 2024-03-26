@@ -21,7 +21,7 @@ function Book(title, author, pages, read) {
 
 }
 
-const lotr = new Book('The Lord of the rings', 'Tolkien', 452, true);
+const lotr = new Book('The Lord of the rings', ' JRR Tolkien', 452, true);
 const starWars = new Book('Star Wars', 'George Lucas', 289, false);
 const dune = new Book('Dune', 'The A. Uthor', 668, true);
 const dune2 = new Book('Dune', 'The A. Uthor', 668, true);
@@ -47,29 +47,39 @@ function updateLibrary() {
         bookTitle.textContent = book.title;
         bookTile.appendChild(bookTitle);
 
+        const divider = document.createElement('hr');
+        bookTile.appendChild(divider);
+
         const bookAuthor = document.createElement('p');
-        bookAuthor.textContent = book.author;
+        bookAuthor.textContent = `By: ${book.author}`;
         bookTile.appendChild(bookAuthor);
 
         const bookPages = document.createElement('p');
-        bookPages.textContent = book.pages;
+        bookPages.textContent = `Pages: ${book.pages}`;
         bookTile.appendChild(bookPages);
 
-        const readOrNot = document.createElement('p');
-        book.read ? readOrNot.textContent = "Read" : readOrNot.textContent = "Not read";
-        bookTile.appendChild(readOrNot);
+        
 
         const switchBtn = document.createElement('button');
-        bookTile.appendChild(switchBtn);
-        switchBtn.innerText = 'switch';
+        const btnBox = document.createElement('div');
+        btnBox.classList.add('btn-box');
+        bookTile.appendChild(btnBox);
+        btnBox.appendChild(switchBtn);
+        if (!book.read) {
+            switchBtn.innerText = 'Not read';
+            switchBtn.style.backgroundColor = '#B91C1C';
+        } else {
+            switchBtn.innerText = 'Read'
+            switchBtn.style.backgroundColor = '#166534';
+        }
         switchBtn.addEventListener('click', () => {
             book.read = !book.read;
             updateLibrary();
         })
 
         const deleteBtn = document.createElement('button');
-        bookTile.appendChild(deleteBtn);
-        deleteBtn.textContent = 'Delete entry';
+        btnBox.appendChild(deleteBtn);
+        deleteBtn.textContent = 'Delete';
         deleteBtn.addEventListener('click', () => {
             const index = myLibrary.indexOf(book);
             if (index !== -1) {
@@ -80,6 +90,9 @@ function updateLibrary() {
 
             }
         });
+
+        switchBtn.classList.add('switch-btn');
+        deleteBtn.classList.add('delete-btn')
 
     }
     )
