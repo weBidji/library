@@ -22,16 +22,12 @@ function Book(title, author, pages, read) {
 
 }
 
-const lotr = new Book('The Lord of the rings', ' JRR Tolkien', 452, true);
-const starWars = new Book('Star Wars', 'George Lucas', 289, false);
-const dune = new Book('Dune', 'The A. Uthor', 668, true);
-const dune2 = new Book('Dune', 'The A. Uthor', 668, true);
-const dune3 = new Book('Dune', 'The A. Uthor', 668, true);
-myLibrary.push(lotr);
-myLibrary.push(starWars);
+
+const dune = new Book('Dune', 'Frank Herbert', 896, true);
+
+
 myLibrary.push(dune);
-myLibrary.push(dune2);
-myLibrary.push(dune3);
+
 document.addEventListener('DOMContentLoaded', updateLibrary);
 
 function updateLibrary() {
@@ -141,7 +137,7 @@ function addBookToLibrary(e) {
 
     updateLibrary();
 
-    console.log('added!');
+    console.log('Added new book to library.');
 
 
 
