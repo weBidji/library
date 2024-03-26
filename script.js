@@ -5,7 +5,6 @@ const submitBtn = document.getElementById('submit-btn')
 const newTitle = document.getElementById('title');
 const newAuthor = document.getElementById('author');
 const newPages = document.getElementById('pages');
-// const wasRead = document.getElementById('read');
 const readStatus = document.getElementById('read-status');
 let wasRead = false;
 
@@ -28,9 +27,9 @@ const starWars = new Book('Star Wars', 'George Lucas', 289, false);
 const dune = new Book('Dune', 'The A. Uthor', 668, true);
 const dune2 = new Book('Dune', 'The A. Uthor', 668, true);
 const dune3 = new Book('Dune', 'The A. Uthor', 668, true);
-// myLibrary.push(lotr);
-// myLibrary.push(starWars);
-// myLibrary.push(dune);
+myLibrary.push(lotr);
+myLibrary.push(starWars);
+myLibrary.push(dune);
 myLibrary.push(dune2);
 myLibrary.push(dune3);
 document.addEventListener('DOMContentLoaded', updateLibrary);

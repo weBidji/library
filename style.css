@@ -226,6 +226,50 @@ p {
     background-color: var(--amber-700);
 }
 
+@media screen and (max-width:900px) {
+    #books-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .book-tile {
+        width: 500px;
+    }
+}
+
+@media screen and (max-width:550px) {
+    .book-tile {
+        width: 400px;
+    }
+}
+
+@media screen and (max-width:475px) {
+    .book-tile {
+        width: 320px;
+    }
+
+    .btn-box {
+        gap: 10px;
+        font-size: 0.rem;
+    }
+
+    .switch-btn,
+    .delete-btn {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (min-width:1700px) {
+    #books-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (min-width:2000px) {
+    #books-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
 
 
 
