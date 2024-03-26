@@ -5,7 +5,9 @@ const submitBtn = document.getElementById('submit-btn')
 const newTitle = document.getElementById('title');
 const newAuthor = document.getElementById('author');
 const newPages = document.getElementById('pages');
-const wasRead = document.getElementById('read');
+// const wasRead = document.getElementById('read');
+const readStatus = document.getElementById('read-status');
+let wasRead = false;
 
 const booksGrid = document.getElementById('books-grid');
 
@@ -26,9 +28,9 @@ const starWars = new Book('Star Wars', 'George Lucas', 289, false);
 const dune = new Book('Dune', 'The A. Uthor', 668, true);
 const dune2 = new Book('Dune', 'The A. Uthor', 668, true);
 const dune3 = new Book('Dune', 'The A. Uthor', 668, true);
-myLibrary.push(lotr);
-myLibrary.push(starWars);
-myLibrary.push(dune);
+// myLibrary.push(lotr);
+// myLibrary.push(starWars);
+// myLibrary.push(dune);
 myLibrary.push(dune2);
 myLibrary.push(dune3);
 document.addEventListener('DOMContentLoaded', updateLibrary);
@@ -58,13 +60,16 @@ function updateLibrary() {
         bookPages.textContent = `Pages: ${book.pages}`;
         bookTile.appendChild(bookPages);
 
-        
+
 
         const switchBtn = document.createElement('button');
         const btnBox = document.createElement('div');
+
         btnBox.classList.add('btn-box');
+
         bookTile.appendChild(btnBox);
         btnBox.appendChild(switchBtn);
+
         if (!book.read) {
             switchBtn.innerText = 'Not read';
             switchBtn.style.backgroundColor = '#B91C1C';
@@ -105,24 +110,33 @@ addbtn.addEventListener('click', () => {
 
 })
 
-submitBtn.addEventListener('click', addBookToLibrary);
+submitBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    if (newTitle.value && newAuthor.value && newPages.value) {
+        addBookToLibrary();
+    }
+});
 
 function addBookToLibrary(e) {
-    e.preventDefault();
+
 
     const title = newTitle.value;
     const author = newAuthor.value;
     const pages = newPages.value;
-    const read = wasRead.checked;
+    const read = readStatus;
+    ;
 
     const newBook = new Book(title, author, pages, read);
+
+    readStatus.checked ? newBook.read = true : newBook.read = false
 
     myLibrary.push(newBook);
 
     newTitle.value = '';
     newAuthor.value = '';
     newPages.value = '';
-    wasRead.checked = false;
+    readStatus.checked = false;
 
     dialog.close();
 
