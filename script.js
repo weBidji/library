@@ -38,38 +38,71 @@ function addBookToLibrary(e) {
 
     myLibrary.push(newBook);
 
-    newTitle.value = ''; 456
+    newTitle.value = '';
     newAuthor.value = '';
     newPages.value = '';
     wasRead.checked = false;
 
     dialog.close();
 
+    updateLibrary();
+
     console.log('added!');
 
-    booksGrid.innerHTML = '';
+    
 
-    myLibrary.forEach((book) => {
+    function updateLibrary() {
 
-        const bookTile = document.createElement('div');
-        bookTile.classList.add('book-tile');
-        booksGrid.appendChild(bookTile);
+        booksGrid.innerHTML = '';
 
-        const bookTitle = document.createElement('h2');
-        bookTitle.textContent = book.title;
-        bookTile.appendChild(bookTitle);
+        myLibrary.forEach((book) => {
 
-        const bookAuthor = document.createElement('p');
-        bookAuthor.textContent = book.author;
-        bookTile.appendChild(bookAuthor);
+            const bookTile = document.createElement('div');
+            bookTile.classList.add('book-tile');
+            booksGrid.appendChild(bookTile);
 
-        const bookPages = document.createElement('p');
-        bookPages.textContent = book.pages;
-        bookTile.appendChild(bookPages);
+            const bookTitle = document.createElement('h2');
+            bookTitle.textContent = book.title;
+            bookTile.appendChild(bookTitle);
+
+            const bookAuthor = document.createElement('p');
+            bookAuthor.textContent = book.author;
+            bookTile.appendChild(bookAuthor);
+
+            const bookPages = document.createElement('p');
+            bookPages.textContent = book.pages;
+            bookTile.appendChild(bookPages);
+
+            const readOrNot = document.createElement('p');
+            book.read ? readOrNot.textContent = "Read" : readOrNot.textContent = "Not read";
+            bookTile.appendChild(readOrNot);
+
+            const switchBtn = document.createElement('button');
+            bookTile.appendChild(switchBtn);
+            switchBtn.innerText = 'switch';
+            switchBtn.addEventListener('click', () => {
+                book.read = !book.read;
+                updateLibrary();
+            })
+
+            const deleteBtn = document.createElement('button');
+            bookTile.appendChild(deleteBtn);
+            deleteBtn.textContent = 'Delete entry';
+            deleteBtn.addEventListener('click', () => {
+                const index = myLibrary.indexOf(book);
+                if (index !== -1) {
+                    myLibrary.splice(index, 1);
+
+                    updateLibrary();
+
+
+                }
+            });
+
+        }
+        )
+
 
     }
-    )
 
 }
-
-
